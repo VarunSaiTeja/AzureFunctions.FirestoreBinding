@@ -9,7 +9,7 @@ namespace AzureFunctions.FirestoreBinding
     {
         public void Configure(IWebJobsBuilder builder)
         {
-            builder.AddExtension<FirestoreDBConfigProvider>();
+            builder.AddExtension<FirestoreConfigProvider>();
         }
     }
 }

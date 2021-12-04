@@ -9,7 +9,7 @@ namespace AzureFunctions.FirestoreBinding
 {
 
     [Extension("FirestoreDB")]
-    public class FirestoreDBConfigProvider : IExtensionConfigProvider
+    public class FirestoreConfigProvider : IExtensionConfigProvider
     {
         private FirestoreDb firestoreDb;
 
@@ -22,8 +22,8 @@ namespace AzureFunctions.FirestoreBinding
 
             var rule = context.AddBindingRule<FirestoreDBAttribute>();
             rule.AddValidator(ValidateConnection);
-            rule.BindToCollector<OpenType.Poco>(typeof(FirestoreDBOutputConverter<>), this);
-            rule.BindToInput<OpenType.Poco>(typeof(FirestoreDBInputConverter<>), this);
+            rule.BindToCollector<OpenType.Poco>(typeof(FirestoreOutputConverter<>), this);
+            rule.BindToInput<OpenType.Poco>(typeof(FirestoreInputConverter<>), this);
         }
 
         public async Task<T> GetDocument<T>(FirestoreDBAttribute attribute)

@@ -2,11 +2,11 @@
 
 namespace AzureFunctions.FirestoreBinding
 {
-    class FirestoreDBInputConverter<T> : IAsyncConverter<FirestoreDBAttribute, T>
+    class FirestoreInputConverter<T> : IAsyncConverter<FirestoreDBAttribute, T>
     {
-        readonly FirestoreDBConfigProvider _configProvider;
+        readonly FirestoreConfigProvider _configProvider;
 
-        public FirestoreDBInputConverter(FirestoreDBConfigProvider configProvider)
+        public FirestoreInputConverter(FirestoreConfigProvider configProvider)
         {
             _configProvider = configProvider;
         }

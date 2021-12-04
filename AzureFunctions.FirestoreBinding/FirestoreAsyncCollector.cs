@@ -3,12 +3,12 @@ using Microsoft.Azure.WebJobs;
 
 namespace AzureFunctions.FirestoreBinding
 {
-    public class FirestoreDBBindingAsyncCollector<T> : IAsyncCollector<T>
+    public class FirestoreAsyncCollector<T> : IAsyncCollector<T>
     {
         private readonly FirestoreDBAttribute _attribute;
         private readonly CollectionReference _collection;
 
-        public FirestoreDBBindingAsyncCollector(FirestoreDBAttribute attribute, CollectionReference collection)
+        public FirestoreAsyncCollector(FirestoreDBAttribute attribute, CollectionReference collection)
         {
             _attribute = attribute;
             _collection = collection;

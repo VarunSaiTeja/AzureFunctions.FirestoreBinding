@@ -2,11 +2,11 @@
 
 namespace AzureFunctions.FirestoreBinding
 {
-    class FirestoreDBOutputConverter<T> : IConverter<FirestoreDBAttribute, IAsyncCollector<T>>
+    class FirestoreOutputConverter<T> : IConverter<FirestoreDBAttribute, IAsyncCollector<T>>
     {
-        readonly FirestoreDBConfigProvider _configProvider;
+        readonly FirestoreConfigProvider _configProvider;
 
-        public FirestoreDBOutputConverter(FirestoreDBConfigProvider configProvider)
+        public FirestoreOutputConverter(FirestoreConfigProvider configProvider)
         {
             _configProvider = configProvider;
         }
@@ -14,7 +14,7 @@ namespace AzureFunctions.FirestoreBinding
         public IAsyncCollector<T> Convert(FirestoreDBAttribute attribute)
         {
             var collectionRef = _configProvider.GetCollection(attribute);
-            return new FirestoreDBBindingAsyncCollector<T>(attribute, collectionRef);
+            return new FirestoreAsyncCollector<T>(attribute, collectionRef);
         }
     }
 }
