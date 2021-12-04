@@ -1,8 +1,8 @@
 <Project>
   <PropertyGroup Label="Сommon properties">
     <LangVersion>latest</LangVersion>
-    <PackageProjectUrl>https://github.com/AzureFunctions.FirestoreBinding</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/AzureFunctions.FirestoreBinding</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/VarunSaiTeja/AzureFunctions.FirestoreBinding</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/VarunSaiTeja/AzureFunctions.FirestoreBinding</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <Copyright>Varun Teja</Copyright>
     <Authors>Varun Teja</Authors>
