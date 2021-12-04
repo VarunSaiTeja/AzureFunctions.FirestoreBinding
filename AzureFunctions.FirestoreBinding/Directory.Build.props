@@ -7,7 +7,7 @@
     <Copyright>Varun Teja</Copyright>
     <Authors>Varun Teja</Authors>
     <Product>$(MSBuildProjectName)</Product>
-    <Description>Provides input & output binding to Firestore for your Azure Functions</Description>
+    <Description>Provides input and output binding to Firestore for your Azure Functions</Description>
     <Title>$(MSBuildProjectName)</Title>
     <AssemblyName>$(MSBuildProjectName)</AssemblyName>
     <RootNamespace>$(MSBuildProjectName)</RootNamespace>
