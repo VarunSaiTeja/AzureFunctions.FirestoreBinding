@@ -14,9 +14,11 @@ namespace AzureFunctions.FirestoreBinding
         public string DocId { get; set; }
 
         [AutoResolve]
-        public string FirebaseProjectId { get; set; }
-
-        [AutoResolve]
         public string FirebaseSecret { get; set; }
+
+        public string GetFirebaseSecret()
+        {
+            return string.IsNullOrWhiteSpace(FirebaseSecret) ? Environment.GetEnvironmentVariable(nameof(FirebaseSecret)) : FirebaseSecret;
+        }
     }
 }

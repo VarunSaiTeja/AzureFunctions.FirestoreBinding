@@ -12,7 +12,7 @@ namespace Demo
         [FunctionName("AddBulk")]
         public static async Task<IActionResult> AddBulk(
             [HttpTrigger("post")] List<Employee> employees,
-            [FirestoreDB("employees", FirebaseProjectId = "%FirebaseProjectId%", FirebaseSecret = "%FirebaseSecret%")] IAsyncCollector<Employee> outEmployees)
+            [FirestoreDB("employees")] IAsyncCollector<Employee> outEmployees)
         {
             foreach (var emp in employees)
             {
@@ -24,7 +24,7 @@ namespace Demo
         [FunctionName("AddSingle")]
         public static IActionResult AddSingle(
             [HttpTrigger("post")] Employee employee,
-            [FirestoreDB("employees", FirebaseProjectId = "%FirebaseProjectId%", FirebaseSecret = "%FirebaseSecret%")] out Employee outEmployee)
+            [FirestoreDB("employees")] out Employee outEmployee)
         {
             outEmployee = employee;
 
@@ -34,7 +34,7 @@ namespace Demo
         [FunctionName("GetEmployee")]
         public static IActionResult GetEmployee(
             [HttpTrigger("get", Route = "GetEmployee/{empId}")] HttpRequest req,
-            [FirestoreDB("employees", DocId = "{empId}", FirebaseProjectId = "%FirebaseProjectId%", FirebaseSecret = "%FirebaseSecret%")] Employee employee)
+            [FirestoreDB("employees", DocId = "{empId}")] Employee employee)
         {
             return employee == null ? new NotFoundResult() : new OkObjectResult(employee);
         }

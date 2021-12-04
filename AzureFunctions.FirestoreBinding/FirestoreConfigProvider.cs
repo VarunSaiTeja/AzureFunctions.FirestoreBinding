@@ -2,6 +2,7 @@
 using Microsoft.Azure.WebJobs.Description;
 using Microsoft.Azure.WebJobs.Host.Bindings;
 using Microsoft.Azure.WebJobs.Host.Config;
+using Newtonsoft.Json.Linq;
 using System.Collections.Concurrent;
 using System.Text;
 
@@ -36,14 +37,7 @@ namespace AzureFunctions.FirestoreBinding
 
         void ValidateConnection(FirestoreDBAttribute attribute, Type paramType)
         {
-            if (string.IsNullOrEmpty(attribute.FirebaseProjectId))
-            {
-                string attributeProperty = $"{nameof(FirestoreDBAttribute)}.{nameof(FirestoreDBAttribute.FirebaseProjectId)}";
-                throw new InvalidOperationException(
-                    $"The Firestore Project Id must be set via the {attributeProperty} property.");
-            }
-
-            if (string.IsNullOrEmpty(attribute.FirebaseSecret))
+            if (string.IsNullOrEmpty(attribute.GetFirebaseSecret()))
             {
                 string attributeProperty = $"{nameof(FirestoreDBAttribute)}.{nameof(FirestoreDBAttribute.FirebaseSecret)}";
                 throw new InvalidOperationException(
@@ -60,18 +54,19 @@ namespace AzureFunctions.FirestoreBinding
 
         public CollectionReference GetCollection(FirestoreDBAttribute attribute)
         {
-
             if (firestoreDb == null)
             {
-                var firebaseSecret = Encoding.UTF8.GetString(Convert.FromBase64String(attribute.FirebaseSecret));
+                var firebaseSecret = Encoding.UTF8.GetString(Convert.FromBase64String(attribute.GetFirebaseSecret()));
+                var projectId = JObject.Parse(firebaseSecret).Property("project_id").Value.ToString();
+
                 firestoreDb = new FirestoreDbBuilder
                 {
-                    ProjectId = attribute.FirebaseProjectId,
+                    ProjectId = projectId,
                     JsonCredentials = firebaseSecret
                 }.Build();
             }
 
-            string cacheKey = $"{attribute.FirebaseProjectId}|{attribute.CollectionPath}";
+            string cacheKey = $"{firestoreDb.ProjectId}|{attribute.CollectionPath}";
             var collection = CollecttionCache.GetOrAdd(cacheKey, (c) => firestoreDb.Collection(attribute.CollectionPath));
             return collection;
         }
