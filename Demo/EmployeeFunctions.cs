@@ -1,4 +1,5 @@
 using AzureFunctions.FirestoreBinding;
+using Google.Cloud.Firestore;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
@@ -37,6 +38,15 @@ namespace Demo
             [FirestoreDB("employees", DocId = "{empId}")] Employee employee)
         {
             return employee == null ? new NotFoundResult() : new OkObjectResult(employee);
+        }
+
+        [FunctionName("GetSeniorEmployees")]
+        public static async Task<IActionResult> GetSeniorEmployees(
+            [HttpTrigger("get", Route = "GetSeniorEmployees")] HttpRequest req,
+            [FirestoreDB("employees")] CollectionReference collection)
+        {
+            var employees = await collection.WhereGreaterThanOrEqualTo("Age", "40").GetDocumentsAsync<Employee>();
+            return new OkObjectResult(employees);
         }
     }
 }

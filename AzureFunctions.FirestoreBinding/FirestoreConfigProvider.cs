@@ -29,6 +29,16 @@ namespace AzureFunctions.FirestoreBinding
 
         public async Task<T> GetDocument<T>(FirestoreDBAttribute attribute)
         {
+            if (string.IsNullOrWhiteSpace(attribute.DocId))
+            {
+                if (typeof(T) == typeof(CollectionReference))
+                    return (T)Convert.ChangeType(GetCollection(attribute), typeof(T));
+
+                string attributeProperty = $"{nameof(FirestoreDBAttribute)}.{nameof(FirestoreDBAttribute.DocId)}";
+                throw new InvalidOperationException(
+                    $"The Firestore collection must be set via the {attributeProperty} property.");
+            }
+
             var collection = GetCollection(attribute);
             var doc = collection.Document(attribute.DocId);
             var snap = await doc.GetSnapshotAsync();
