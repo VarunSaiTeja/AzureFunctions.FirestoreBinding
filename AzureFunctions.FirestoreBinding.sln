@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureFunctions.FirestoreBinding", "AzureFunctions.FirestoreBinding\AzureFunctions.FirestoreBinding.csproj", "{6BE06A74-FC19-4BCF-803F-8898E59697EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "Demo\Demo.csproj", "{ACFECBC3-02B9-437E-BCA5-7CDC97954FBE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6BE06A74-FC19-4BCF-803F-8898E59697EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BE06A74-FC19-4BCF-803F-8898E59697EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BE06A74-FC19-4BCF-803F-8898E59697EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BE06A74-FC19-4BCF-803F-8898E59697EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACFECBC3-02B9-437E-BCA5-7CDC97954FBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACFECBC3-02B9-437E-BCA5-7CDC97954FBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACFECBC3-02B9-437E-BCA5-7CDC97954FBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACFECBC3-02B9-437E-BCA5-7CDC97954FBE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {75F8BB7E-C04E-449D-A334-38704BB98FEC}
+	EndGlobalSection
+EndGlobal
