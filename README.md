@@ -83,7 +83,7 @@ For output binding documents, If you want to use Id to be consider/populated wrt
 [FirestoreData]
 public class Employee
 {
-    //Will use this value if assigned while doc insertion, otherwise the property will be filled with docId genereated by firestore.
+    //Will use this value if assigned while doc insertion, otherwise this property will be filled with docId genereated by firestore.
     //If this attribute is not there for any of property in your class, then also the output binding will work.
     [FirestoreDocumentId]
     public string Id { get; set; }
