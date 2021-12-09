@@ -13,12 +13,24 @@
 6. Now go to your local.settings.json and inside values object configure the FireabaseSecret. The key is same i.e FirebaseSecret & value is Base64 Encoded string.
 
 
-#### Input Binding Document:
+#### Input Binding Document, look up ID from route data:
 ```csharp
 [FunctionName("GetEmployee")]
 public static IActionResult GetEmployee(
   [HttpTrigger("get", Route = "GetEmployee/{empId}")] HttpRequest req, 
   [FirestoreDB("employees", DocId = "{empId}")] Employee employee)
+{
+    return employee == null ? new NotFoundResult() : new OkObjectResult(employee);
+}
+```
+
+
+#### Input Binding Document, look up ID from query string:
+```csharp
+[FunctionName("GetEmployee")]
+public static IActionResult GetEmployee(
+  [HttpTrigger("get", Route = "GetEmployee")] HttpRequest req, 
+  [FirestoreDB("employees", DocId = "{Query.empId}")] Employee employee)
 {
     return employee == null ? new NotFoundResult() : new OkObjectResult(employee);
 }
