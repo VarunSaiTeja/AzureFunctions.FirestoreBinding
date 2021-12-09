@@ -4,8 +4,7 @@
 
 ## Adds support for input/output binding to your Azure functions with Firestore database.
 
-### Configuration
-#### Steps: 
+#### Configuration Steps: 
 1. Go to your firebase service account settings https://console.firebase.google.com/u/0/project/{your-project-id}/settings/serviceaccounts/adminsdk
 2. Create and download the private key, a JSON file will be downloaded which having all configuration to connect to firestore.
 3. Open the file and copy all the content inside the file.
