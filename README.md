@@ -2,6 +2,9 @@
 <a href="https://www.nuget.org/packages/AzureFunctions.FirestoreBinding"><img alt="NuGet Version" src="https://img.shields.io/nuget/v/AzureFunctions.FirestoreBinding"></a>
 <a href="https://www.nuget.org/packages/AzureFunctions.FirestoreBinding"><img alt="NuGet Downloads" src="https://img.shields.io/nuget/dt/AzureFunctions.FirestoreBinding"></a>
 
+[!["Buy Me A Coffee"](https://cdn.buymeacoffee.com/assets/img/home-page-v3/bmc-new-logo.png)](https://www.buymeacoffee.com/varunteja)
+
+
 ## Adds support for input/output binding to your Azure functions with Firestore database.
 
 #### Configuration Steps: 
