@@ -89,3 +89,20 @@ public class Employee
     public string Id { get; set; }
 }
 ```
+
+For DI of firestore into your service classes
+```csharp
+public class EmployeeService()
+{
+  readonly FirestoreDb _db;
+  public EmployeeService(FirestoreDb db)
+  {
+    _db=db;
+  }
+  
+  public List<Employee> GetAllEmployees()
+  {
+    _db.CollectionReference("Employees").GetDocumentsAsync<Employee>();
+  }
+}
+```
