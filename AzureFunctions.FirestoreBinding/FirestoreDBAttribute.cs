@@ -14,7 +14,7 @@ namespace AzureFunctions.FirestoreBinding
         public string DocId { get; set; }
 
         [AutoResolve]
-        public string FirebaseSecret { get; set; }
+        internal string FirebaseSecret { get; set; }
 
         public string GetFirebaseSecret()
         {

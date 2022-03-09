@@ -76,7 +76,7 @@ namespace AzureFunctions.FirestoreBinding
                 }.Build();
             }
 
-            string cacheKey = $"{firestoreDb.ProjectId}|{attribute.CollectionPath}";
+            string cacheKey = attribute.CollectionPath;
             var collection = CollecttionCache.GetOrAdd(cacheKey, (c) => firestoreDb.Collection(attribute.CollectionPath));
             return collection;
         }
