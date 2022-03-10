@@ -13,7 +13,7 @@ namespace AzureFunctions.FirestoreBinding
 
         public async Task<T> ConvertAsync(FirestoreDBAttribute attribute, CancellationToken cancellationToken)
         {
-            return await _configProvider.GetDocument<T>(attribute);
+            return await _configProvider.context.GetDocument<T>(attribute);
         }
     }
 }

@@ -13,7 +13,9 @@ namespace AzureFunctions.FirestoreBinding
     {
         public void Configure(IWebJobsBuilder builder)
         {
+            builder.Services.AddSingleton<FirestoreContext>();
             builder.AddExtension<FirestoreConfigProvider>();
+
             var firebaseSecret = Environment.GetEnvironmentVariable("FirebaseSecret");
             if (!string.IsNullOrEmpty(firebaseSecret))
             {

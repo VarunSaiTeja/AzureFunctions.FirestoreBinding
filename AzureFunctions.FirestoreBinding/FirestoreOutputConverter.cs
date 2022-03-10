@@ -13,7 +13,7 @@ namespace AzureFunctions.FirestoreBinding
 
         public IAsyncCollector<T> Convert(FirestoreDBAttribute attribute)
         {
-            var collectionRef = _configProvider.GetCollection(attribute);
+            var collectionRef = _configProvider.context.GetCollection(attribute);
             return new FirestoreAsyncCollector<T>(attribute, collectionRef);
         }
     }
